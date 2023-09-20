@@ -2,6 +2,9 @@ from collections import deque
 
 Y, X = map(int, input().split())
 
+# strip : 문자 양쪽 공백 제거
+# rstrip : 문자 오른쪽의 공백 제거
+# lstrip : 문자 왼쪽의 공백 제거
 graph = [list(input().rstrip()) for _ in range(Y)]
 
 # 처음부터 끝까지 다 돌면서
