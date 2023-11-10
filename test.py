@@ -1,64 +1,45 @@
-# 주석처리 : ctrl k+c / 주석해제 : ctrl k+u
-print('hello')
+# import itertools
 
-name = 'my name is seung'
+# N = int(input())
 
-print(name)
-print(name[0])
+# ans = []
+# for i in range(N):
+#     M = int(input())
+#     arr = list(map(int, input().split()))
 
-# 리스트
-중고차 = ['k5', 'white', '5000']
-중고차[1] = 'black'
-print(중고차[0])
+#     arrSum = 0
+#     for j in range(1, len(arr) + 1):
+#         numList = list(itertools.combinations(arr, j))
 
-# 딕셔너리
-중고차2 = {'brand' : 'bmw', 'model' : '520d' }
-중고차2['brand'] = 'benz'
-print(중고차2['brand'])
+#         for k in numList:
+#             arrSum += sum(k) / j
 
-# if
-재고량 = 10
-if 재고량 > 0 : 
-    print('지금 주문 가능합니다')
+#     ans.append(arrSum / (2 ** len(arr) - 1))
 
-중고차재고 = ['k5', 'bmw', 'Tico']
+# for i, num in enumerate(ans):
+#     formatted_number = "{:.20f}".format(num).rstrip("0").rstrip(".")
+#     print("#{0} {1}".format(i + 1, formatted_number))
 
-if 'k6' in 중고차재고: 
-    print('지금 주문 가능합니다')
-elif 'bmw2' in 중고차재고:
-    print('지금 주문 가능합니다2')
-else:
-    print('지금 주문 가능합니다3')
+N = int(input())
+ansArr = []
 
-# for
-중고차들 = ['k5', 'bmw','Tico'] # List
-중고차들2 = {'brand1':'k5', 'brand2':'bmw', 'brand3':'Tico'} # dict
+for _ in range(N):
+    lenArr = int(input())
+    arr = list(map(int, input().split()))
 
-for i in range(0, 10):
-    print('bmw 있음')
+    # 일단 max 값을 넣어놔 그리고 그 날 지나면 arr 쪼개서 갱신
+    maxPrice = max(arr)
+    ans = 0
+    while len(arr) > 0:
+        for i in range(len(arr)):
+            if arr[i] == maxPrice:
+                for j in range(i):
+                    ans += arr[j]
+                arr = arr[i + 1 :]
+                break
 
-for i in 중고차들:
-    print(i * 3)
+    ansArr.append(ans)
+    ans = 0
 
-for i,name in 중고차들2.items():
-    print(i * 3, name * 3)
-
-
-
-# 함수 def
-def 인사하기() :
-    print('Hello 승입니다')
-
-인사하기()
-
-def 모자(x, y):
-    print(1+x, 2+y)
-
-모자(121, 123)
-
-def 함수():
-    return 10
-
-print(함수())
-
-print(len([1,2,3]))
+for i, ans in enumerate(ansArr):
+    print("#{0} {1}".format(i, ans))
