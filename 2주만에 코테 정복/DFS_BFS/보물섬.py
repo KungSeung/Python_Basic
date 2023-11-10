@@ -1,3 +1,6 @@
+# 보통은 BFS가 그래프 탐색에 좋다!
+# DFS => 경우의 수를 탐색하는 방법! ( 완전탐색, 재귀를 생각해보면 된다 )
+# BFS => 노드와 노드의 관계를 탐색하는 방법!
 from collections import deque
 
 Y, X = map(int, input().split())
@@ -29,6 +32,7 @@ for y in range(Y):
                 ey, ex = q.popleft()
 
                 # 4 방향 탐색 : 2차원 DP
+                # 출력이 [dy = 0, dx = 1] 리스트 1개씩 됨
                 for dy, dx in [[0, 1], [1, 0], [-1, 0], [0, -1]]:
                     ny, nx = ey + dy, ex + dx
                     if 0 <= ny < Y and 0 <= nx < X:
